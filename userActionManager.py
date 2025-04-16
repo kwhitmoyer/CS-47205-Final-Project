@@ -1,31 +1,38 @@
 from encryptionManager import * 
 from userDatabaseManager import * 
 
-def loginExistingUser(existingUsernameInput, existingPasswordInput):
-        existingUserUsername = existingUsernameInput.get()
-        existingUserPassword = existingPasswordInput.get() 
+def loginExistingUser(existingUsername, existingPassword):
+    print("Raw username and password: ")
+    print("Username: " + existingUsername)
+    print("Password: " + existingPassword)
 
-        print("Raw username and password: ")
-        print("Username: " + existingUserUsername)
-        print("Password: " + existingUserPassword)
+    #Toy example: Encrypting with AES-256
+    usernameKey, usernameNonce, usernameCipher, usernameTag = encrypt(existingUsername)
+    passwordKey, passwordNonce, passwordCipher, passwordTag = encrypt(existingPassword)
 
-        hashedExistingUserPassword = hashPassword(existingUserPassword).hex()
-        print("Hashed password: ", hashedExistingUserPassword)
+    #Toy example: Decrypting from AES-256
+    decryptedUsername = decrypt(usernameKey, usernameNonce, usernameCipher, usernameTag).decode('utf-8')
+    decryptedPassword = decrypt(passwordKey, passwordNonce, passwordCipher, passwordTag).decode('utf-8')
 
-        checkPassword(existingUserUsername, hashedExistingUserPassword)
+    checkPassword(decryptedUsername, decryptedPassword)
 
 
 def addNewUser(newUsernameInput, newPasswordInput): 
-    newUserUsername = newUsernameInput.get()
-    newUserPassword = newPasswordInput.get()
+    newUserUsername = newUsernameInput
+    newUserPassword = newPasswordInput
 
     print("Raw username and password: ")
     print("Username: " + newUserUsername)
     print("Password: " + newUserPassword)
 
-    hashedNewUserPassword = hashPassword(newUserPassword).hex()
-    print("Hashed password: ", hashedNewUserPassword )
+    #Toy example: Encrypting with AES-256
+    usernameKey, usernameNonce, usernameCipher, usernameTag = encrypt(newUsernameInput)
+    passwordKey, passwordNonce, passwordCipher, passwordTag = encrypt(newPasswordInput)
 
-    addUser(newUserUsername, hashedNewUserPassword)
+    #Toy example: Decrypting with AES-256
+    decryptedUsername = decrypt(usernameKey, usernameNonce, usernameCipher, usernameTag).decode('utf-8')
+    decryptedPassword = decrypt(passwordKey, passwordNonce, passwordCipher, passwordTag).decode('utf-8')
+
+    addUser(decryptedUsername, decryptedPassword)
 
 #No tests as using the UI provides the same functionality 

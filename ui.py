@@ -25,7 +25,7 @@ def loginWindow():
     usernameEntry = Entry(Login, textvariable=existingPasswordInput)
     usernameEntry.place(x=110, y=190)
 
-    Button(Login, text="Login", width=20, bg="grey", fg="white", command=loginExistingUser(existingUsernameInput, existingPasswordInput)).place(x=120, y=240)
+    Button(Login, text="Login", width=20, bg="grey", fg="white",  command=lambda: loginExistingUser(existingUsernameInput.get(), existingPasswordInput.get())).place(x=120, y=240)
 
 
 root = Tk()
@@ -48,7 +48,7 @@ usernameLabel.place(x=80, y=160)
 usernameEntry = Entry(root, textvariable=newPasswordInput)
 usernameEntry.place(x=110, y=190)
 
-Button(root, text="Register", width=20, bg="grey", fg="white", command=addNewUser(newUsernameInput, newPasswordInput)).place(x=120, y=240)
+Button(root, text="Register", width=20, bg="grey", fg="white", command=lambda: addNewUser(newUsernameInput.get(), newPasswordInput.get())).place(x=120, y=240)
 Button(root, text="I already have an account.", width=20, bg="grey", fg="white", command=loginWindow).place(x=120, y=290)
 
 root.mainloop()
