@@ -2,10 +2,18 @@ from encryptionManager import *
 from userDatabaseManager import * 
 
 def loginExistingUser(existingUsername, existingPassword):
-    print("Raw username and password: ")
-    print("Username: " + existingUsername)
-    print("Password: " + existingPassword)
+    #Toy example: Encrypting with AES-256
+    usernameKey, usernameNonce, usernameCipher, usernameTag = encrypt(existingUsername)
+    passwordKey, passwordNonce, passwordCipher, passwordTag = encrypt(existingPassword)
 
+    #Toy example: Decrypting from AES-256
+    decryptedUsername = decrypt(usernameKey, usernameNonce, usernameCipher, usernameTag).decode('utf-8')
+    decryptedPassword = decrypt(passwordKey, passwordNonce, passwordCipher, passwordTag).decode('utf-8')
+
+    checkPassword(decryptedUsername, decryptedPassword)
+
+
+def loginExistingUserForInjection(existingUsername, existingPassword):
     #Toy example: Encrypting with AES-256
     usernameKey, usernameNonce, usernameCipher, usernameTag = encrypt(existingUsername)
     passwordKey, passwordNonce, passwordCipher, passwordTag = encrypt(existingPassword)
@@ -20,10 +28,6 @@ def loginExistingUser(existingUsername, existingPassword):
 def addNewUser(newUsernameInput, newPasswordInput): 
     newUserUsername = newUsernameInput
     newUserPassword = newPasswordInput
-
-    print("Raw username and password: ")
-    print("Username: " + newUserUsername)
-    print("Password: " + newUserPassword)
 
     #Toy example: Encrypting with AES-256
     usernameKey, usernameNonce, usernameCipher, usernameTag = encrypt(newUsernameInput)

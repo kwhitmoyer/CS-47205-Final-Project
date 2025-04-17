@@ -20,17 +20,18 @@ def loginWindow():
     usernameEntry = Entry(Login, textvariable=existingUsernameInput)
     usernameEntry.place(x=110, y=130)
 
-    usernameLabel = Label(Login, text = "Enter password", width=30)
-    usernameLabel.place(x=70, y=160)
-    usernameEntry = Entry(Login, textvariable=existingPasswordInput)
-    usernameEntry.place(x=110, y=190)
+    passwordLabel = Label(Login, text = "Enter password", width=30)
+    passwordLabel.place(x=70, y=160)
+    passwordEntry = Entry(Login, textvariable=existingPasswordInput)
+    passwordEntry.place(x=110, y=190)
 
     Button(Login, text="Login", width=20, bg="grey", fg="white",  command=lambda: loginExistingUser(existingUsernameInput.get(), existingPasswordInput.get())).place(x=120, y=240)
+    Button(Login, text="Login with Injection Mode", width=20, bg="grey", fg="white", command=lambda: loginExistingUserForInjection(existingUsernameInput.get(), existingPasswordInput.get())).place(x=120, y=270)
 
 
 root = Tk()
 root.geometry("500x500")
-root.title("RegistrationWindow")
+root.title("Registration Window")
 
 newUsernameInput = StringVar()
 newPasswordInput = StringVar()
