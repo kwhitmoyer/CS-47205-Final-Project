@@ -118,3 +118,11 @@ if __name__ == "__main__":
     checkPassword("Steve", "evilPassword") #Shoudld return false
     print("The following login should fail:") 
     checkPassword("Eve", "EvilPassword") #Should return false 
+
+'''
+Academic Integrity Notes:
+    The underlying structure of the sqlite database was taken from: https://github.com/evaizalith/flowerpath
+    Information on hashing passwords: https://www.tutorialspoint.com/how-to-hash-passwords-in-python
+
+    All sources can be found in sources.md in repo
+'''

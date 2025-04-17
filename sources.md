@@ -2,6 +2,8 @@
 UI Resources 
 https://www.w3resource.com/python-exercises/tkinter/python-tkinter-basic-exercise-16.php
 https://owlbuddy.com/login-and-signup-using-sqlite/
+https://stackoverflow.com/questions/70406400/understanding-python-lambda-behavior-with-tkinter-button
+https://www.geeksforgeeks.org/using-lambda-in-gui-programs-in-python/
 https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/label.html
 https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/tkMessageBox.html
 

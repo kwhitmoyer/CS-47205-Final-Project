@@ -37,3 +37,15 @@ if __name__ == "__main__":
     decrypted = decrypt(aes_key, nonce, ciphertext, tag)
     print("The decrypted text is: " + decrypted.hex())
 
+'''
+Academic Integrity Notes:
+    Techniques for hashing passwords in Python were taken from here: https://www.tutorialspoint.com/how-to-hash-passwords-in-python
+    Structure of code for performing AES Encryption with the pycryptdomex library was sourced from:
+        https://pycryptodome.readthedocs.io/en/latest/src/cipher/aes.html
+        https://pycryptodome.readthedocs.io/en/latest/src/examples.html
+    General information on performing AES Encryption is from: 
+        https://medium.com/@dheeraj.mickey/how-to-encrypt-and-decrypt-files-in-python-using-aes-a-step-by-step-guide-d0eb6f525e4e
+        https://nitratine.net/blog/post/python-encryption-and-decryption-with-pycryptodome/
+
+    All sources can be found in sources.md in repo
+'''
