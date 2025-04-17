@@ -2,12 +2,15 @@ import sqlite3
 import os 
 from tkinter import *
 from tkinter import messagebox
+from encryptionManager import hashPassword
 
 databaseConnection = sqlite3.connect("WhitmoyerDB")
 cursor = databaseConnection.cursor() 
 
 def addUser(username, password):
     try: 
+        password = hashPassword(password).hex()
+        print("The hashed password: " + password)
         cursor.execute(f"INSERT INTO User VALUES ('{username}', '{password}')")
         databaseConnection.commit()
     except Exception as e:
@@ -44,6 +47,7 @@ def createDefaultDatabase():
         
 def checkPassword(username, password):
     try: 
+        password = hashPassword(password).hex()
         query = f"SELECT * FROM User WHERE Username = '{username}' AND password = '{password}'"
         checkPassword = cursor.execute(query)
         passwordFound = checkPassword.fetchall()
