@@ -13,9 +13,9 @@ def addUser(username, password):
     except Exception as e:
         print("Failed to add user: ", e)
 
-def addCreditCard(username, creditcard, securitycode):
+def addCreditCard(username, creditcard):
     try: 
-        cursor.execute(f"INSERT INTO Creditcard VALUES ('{username}', '{creditcard}', '{securitycode}')")
+        cursor.executescript(f"INSERT INTO Creditcard VALUES ('{username}', '{creditcard}')")
         databaseConnection.commit()
     except Exception as e:
         print("Failed to add credit card: ", e)
@@ -33,11 +33,11 @@ def createDefaultDatabase():
 
     #Creates seperate, supposedly 'unaccessable' table with high attractive data for UNION SELECT attack 
     try: 
-        cursor.execute("CREATE TABLE IF NOT EXISTS Creditcard(username VARCHAR PRIMARY KEY, creditcardnumber VARCHAR, securitycode VARCHAR)")
-        addCreditCard("SuperAdmin", "1341 2525 3235 5235", "223")
-        addCreditCard("KatherineWhitmoyer", "2352 3342 4264 2464", "235")
-        addCreditCard("Steve", "2352 2524 2355 2352", "235")
-        addCreditCard("Bill", "1341 5235 2453 1351", "993")
+        cursor.execute("CREATE TABLE IF NOT EXISTS Creditcard(username VARCHAR PRIMARY KEY, creditcardnumber VARCHAR)")
+        addCreditCard("SuperAdmin", "1341 2525 3235 5235")
+        addCreditCard("KatherineWhitmoyer", "2352 3342 4264 2464")
+        addCreditCard("Steve", "2352 2524 2355 2352")
+        addCreditCard("Bill", "1341 5235 2453 1351")
         databaseConnection.commit()
     except Exception as e:
         print("Failed to create credit cards for users.")
@@ -51,6 +51,12 @@ def checkPassword(username, password):
             print("Login successful")
             print(passwordFound)
             messagebox.showinfo("Login Successful", "Login successful!")
+
+            #Print query results for purposes of demonstration 
+            print("Query Returns:")
+            for entry in passwordFound:
+                print(entry)
+            
             return True
         else:
             print("Login failed")
