@@ -9,16 +9,22 @@ cursor = databaseConnection.cursor()
 
 def addUser(username, password):
     try: 
-        password = hashPassword(password).hex()
-        print("The hashed password: " + password)
-        cursor.execute(f"INSERT INTO User VALUES ('{username}', '{password}')")
+        usernameInput = username 
+        passwordInput = password
+        hashedPasswordInput = hashPassword(passwordInput).hex()
+        print("The hashed password: " + hashedPasswordInput)
+        query = "INSERT INTO User VALUES (?,?)"
+        cursor.execute(query, (usernameInput, hashedPasswordInput))
         databaseConnection.commit()
     except Exception as e:
         print("Failed to add user: ", e)
 
 def addCreditCard(username, creditcard):
     try: 
-        cursor.executescript(f"INSERT INTO Creditcard VALUES ('{username}', '{creditcard}')")
+        usernameInput = username
+        creditcardInput = creditcard
+        query = ("INSERT INTO Creditcard VALUES (?,?)")
+        cursor.execute(query, (usernameInput, creditcardInput))
         databaseConnection.commit()
     except Exception as e:
         print("Failed to add credit card: ", e)
@@ -48,8 +54,10 @@ def createDefaultDatabase():
 def checkPassword(username, password):
     try: 
         password = hashPassword(password).hex()
-        query = f"SELECT * FROM User WHERE Username = '{username}' AND password = '{password}'"
-        checkPassword = cursor.execute(query)
+        usernameInput = username 
+        passwordInput = password
+        query = "SELECT * FROM User WHERE Username = ? AND password = ?"
+        checkPassword = cursor.execute(query, (usernameInput, passwordInput))
         passwordFound = checkPassword.fetchall()
         if len(passwordFound) != 0:
             print("Login successful")
@@ -73,9 +81,11 @@ def checkPassword(username, password):
 
 def checkPasswordForInjection(username, password):
     try: 
+        usernameInput = username 
+        passwordInput = password 
         password = hashPassword(password).hex()
-        query = f"SELECT * FROM User WHERE Username = '{username}' AND password = '{password}'"
-        checkPassword = cursor.executescript(query)
+        query = "SELECT * FROM User WHERE Username = ? AND password = ?"
+        checkPassword = cursor.execute(query, (usernameInput, passwordInput))
         passwordFound = checkPassword.fetchall()
         if len(passwordFound) != 0:
             print("Login successful")

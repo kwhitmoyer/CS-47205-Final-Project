@@ -21,6 +21,9 @@ https://nitratine.net/blog/post/python-encryption-and-decryption-with-pycryptodo
 ### Database Integration 
 https://github.com/evaizalith/flowerpath
 
+### Parameterized Queries
+https://medium.com/@ajay.monga73/sql-injection-prevention-for-c-developers-parameterized-queries-explained-b5a4cb1b6207
+
 ### Documentation 
 https://docs.python.org/3/library/tkinter.messagebox.html
 https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/
