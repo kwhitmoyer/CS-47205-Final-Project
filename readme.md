@@ -1,6 +1,6 @@
 
 ### This repository contains the final project for CS 47205 Information Security
-### This repo contains part 1, in which the code is vulernable to SQL Injection
+### This repo contains part 2, in which the code is not vulnerable to SQL Injection
 
 #### Note: This code purposefully contains code vulernable to SQL injection, and should not be reused outside of the context of explictly demonstrating SQL injection. 
 
