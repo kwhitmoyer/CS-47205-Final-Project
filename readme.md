@@ -6,3 +6,7 @@
 
 **Reusing this code outside of this context will allow any user of this system to bypass login authentication, destroy or delete the database, and access any database table 
 via UNION SELECT using common sql injection techniques easily found on Google.**
+
+### Running information: 
+  userDatabaseManager.py must be run first
+  ui.py then can be run to run the entire program 
